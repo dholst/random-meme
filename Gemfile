@@ -14,8 +14,11 @@ group :production do
 end
 
 group :assets do
-  gem 'sass-rails'
   gem 'coffee-rails'
+  gem 'execjs'
+  gem 'handlebars_assets'
+  gem 'sass-rails'
+  gem 'therubyracer'
   gem 'uglifier'
 end
 
