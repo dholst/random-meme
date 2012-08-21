@@ -2,7 +2,6 @@ require "bundler/capistrano"
 
 set :application                , "random-meme"
 set :scm                        , :git
-# set :repository                 , "https://github.com/dholst/random-meme.git"
 set :repository                 , "/etc/code/random-meme"
 set :branch                     , "origin/capistrano"
 set :deploy_to                  , "/var/www/randommeme"
