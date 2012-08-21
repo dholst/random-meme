@@ -9,7 +9,7 @@ set :shared_paths, {
 }
 
 set :application , "random-meme"
-set :repository  , "/etc/code/random-meme"
+set :repository  , "https://github.com/dholst/random-meme.git"
 set :revision    , "origin/vlad"
 set :deploy_to   , "/var/www/randommeme"
 set :perm_owner  , "randommeme"
@@ -29,12 +29,10 @@ task :staging do
 end
 
 namespace :vlad do
-  desc "Precompile assets"
   remote_task :assets_precompile, :roles => :app do
     rake "assets:precompile"
   end
  
-  desc 'Restart Unicorn'
   remote_task :start_app, :roles => :app do
     run "/etc/init.d/randommeme restart"
   end
