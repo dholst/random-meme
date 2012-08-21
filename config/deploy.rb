@@ -1,5 +1,13 @@
 require "bundler/vlad"
 
+set :shared_paths, {
+  'system'  => 'public/system',
+  'pids'    => 'tmp/pids',
+  'sockets' => 'tmp/sockets',
+  'bundle'  => '.bundle',
+  'assets'  => 'public/assets'
+}
+
 set :application , "random-meme"
 set :repository  , "/etc/code/random-meme"
 set :revision    , "origin/vlad"
