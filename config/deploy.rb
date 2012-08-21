@@ -2,8 +2,9 @@ require "bundler/capistrano"
 
 set :application                , "random-meme"
 set :scm                        , :git
-set :repository                 , "https://github.com/dholst/random-meme.git"
-set :branch                     , "origin/master"
+# set :repository                 , "https://github.com/dholst/random-meme.git"
+set :repository                 , "/etc/code/random-meme"
+set :branch                     , "origin/capistrano"
 set :deploy_to                  , "/var/www/randommeme"
 set :normalize_asset_timestamps , false
 set :user                       , "randommeme"
@@ -23,7 +24,7 @@ set(:previous_revision) {capture("cd #{current_path}; git rev-parse --short HEAD
 
 desc "tail log files"
 task :tail, :roles => :app do
-  run "tail -f #{shared_path}/log/#{rails_env}.log" do |channel, stream, data|
+  run "tail -f /var/log/www/randommeme*.log" do |channel, stream, data|
     puts "#{channel[:host]}: #{data}"
     break if stream == :err
   end
@@ -100,17 +101,17 @@ namespace :deploy do
 
   desc "restart unicorn"
   task :restart, :except => { :no_release => true } do
-    run "/etc/init.d/unicorn restart /etc/unicorn/randommeme.conf"
+    run "/etc/init.d/randommeme restart"
   end
 
   desc "start unicorn"
   task :start, :except => { :no_release => true } do
-    run "/etc/init.d/unicorn start /etc/unicorn/randommeme.conf"
+    run "/etc/init.d/randommeme start"
   end
 
   desc "stop unicorn"
   task :stop, :except => { :no_release => true } do
-    run "/etc/init.d/unicorn stop /etc/unicorn/randommeme.conf"
+    run "/etc/init.d/randommeme stop"
   end
 
   namespace :rollback do

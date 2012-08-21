@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 
 gem 'rails', '3.2.8'
 gem 'unicorn'
+gem 'capistrano'
 
 group :development, :test do
   gem 'foreman'
@@ -14,8 +15,11 @@ group :production do
 end
 
 group :assets do
-  gem 'sass-rails'
   gem 'coffee-rails'
+  gem 'execjs'
+  gem 'handlebars_assets'
+  gem 'sass-rails'
+  gem 'therubyracer'
   gem 'uglifier'
 end
 
