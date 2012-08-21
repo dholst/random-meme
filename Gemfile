@@ -2,7 +2,8 @@ source 'https://rubygems.org'
 
 gem 'rails', '3.2.8'
 gem 'unicorn'
-gem 'capistrano'
+gem 'vlad'
+gem 'vlad-git'
 
 group :development, :test do
   gem 'foreman'
