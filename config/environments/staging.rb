@@ -68,4 +68,3 @@ RandomMeme::Application.configure do
   config.logger = ActiveSupport::BufferedLogger.new("/var/log/www/randommeme.application.log")
 end
 
-
