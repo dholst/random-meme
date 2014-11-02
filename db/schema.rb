@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120818171737) do
+ActiveRecord::Schema.define(:version => 20120818165725) do
 
   create_table "memes", :force => true do |t|
     t.string   "url"

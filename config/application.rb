@@ -64,5 +64,12 @@ module RandomMeme
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
+
+    unless Rails.env.test?
+      log_level = String(ENV['LOG_LEVEL'] || "info").upcase
+      config.logger = Logger.new(STDOUT)
+      config.logger.level = Logger.const_get(log_level)
+      config.log_level = log_level
+    end
   end
 end

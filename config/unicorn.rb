@@ -15,13 +15,6 @@ listen '/var/www/randommeme/current/tmp/sockets/unicorn.sock', :backlog => 2048
 stderr_path "/var/log/www/randommeme.stderr.log"
 stdout_path "/var/log/www/randommeme.stdout.log"
 
-before_exec do |server|
-  # BUNDLE_GEMFILE is currently set to the explicit revision directory,
-  # changing to the current directory so that we can do more deploys
-  # after the original revision directory has been cycled out
-  ENV['BUNDLE_GEMFILE'] = "/var/www/randommeme/current/Gemfile"
-end
-
 before_fork do |server, worker|
   # When sent a USR2, Unicorn will suffix its pidfile with .oldbin and
   # immediately start loading up a new version of itself (loaded with a new
